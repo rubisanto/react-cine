@@ -116,8 +116,14 @@ const Card = ({ movie }) => {
       <h4>
         {movie.vote_average}/10 <span>⭐</span>
       </h4>
-      {/* afficher les genres */}
-      <ul>{genreFinder()}</ul>
+      {/* afficher les genres si les id sont bient catégorisés*/}
+      <ul>
+        {movie.genre_ids
+          ? genreFinder()
+          : movie.genres.map((genre, index) => (
+              <li key={index}>{genre.name}</li>
+            ))}
+      </ul>
       {/* afficher le synopsis */}
       {movie.overview ? <h3>Synopsis</h3> : ""}
       <p>{movie.overview}</p>
