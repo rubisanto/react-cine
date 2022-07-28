@@ -93,6 +93,20 @@ const Card = ({ movie }) => {
       window.localStorage.movies = storedData;
     }
   };
+  // supprimer l element du stockage
+  const deleteStorage = () => {
+    let storedData = window.localStorage.movies.split(",");
+
+    // appliquer un filtre
+    let newData = storedData.filter((id) => id != movie.id);
+
+    // restocker les données
+    window.localStorage.movies = newData;
+
+    // recharger la page
+    // utiliser Redux pour éviter le reload
+    window.location.reload();
+  };
 
   return (
     <div className="card">
@@ -127,10 +141,17 @@ const Card = ({ movie }) => {
       {/* afficher le synopsis */}
       {movie.overview ? <h3>Synopsis</h3> : ""}
       <p>{movie.overview}</p>
-      {/* afficher le bouton coup de coeur */}
-      <div className="btn" onClick={() => addStorage()}>
-        Ajouter aux coups de coeur
-      </div>
+      {/* afficher le bouton coup de coeur conditionné */}
+      {/* movie.genre_ids existent que pour les données affichées à l'acceuil */}
+      {movie.genre_ids ? (
+        <div className="btn" onClick={() => addStorage()}>
+          Ajouter aux coups de coeur
+        </div>
+      ) : (
+        <div className="btn" onClick={() => deleteStorage()}>
+          Supprimer de la liste{" "}
+        </div>
+      )}
     </div>
   );
 };
