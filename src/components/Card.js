@@ -80,6 +80,20 @@ const Card = ({ movie }) => {
     return genreArray.map((genre) => <li key={genre}>{genre}</li>);
   };
 
+  // pour stocker les coups de coeur
+  const addStorage = () => {
+    // si déjà en localstorage alors splité par virgule sinon tableau vide
+    let storedData = window.localStorage.movies
+      ? window.localStorage.movies.split(",")
+      : [];
+
+    // vérifier que le film n'est pas déjà dans le localstorage
+    if (!storedData.includes(movie.id.toString())) {
+      storedData.push(movie.id);
+      window.localStorage.movies = storedData;
+    }
+  };
+
   return (
     <div className="card">
       {/* pour l'image prendre le début de l'url et le path en boucle pour chaque image */}
@@ -108,7 +122,9 @@ const Card = ({ movie }) => {
       {movie.overview ? <h3>Synopsis</h3> : ""}
       <p>{movie.overview}</p>
       {/* afficher le bouton coup de coeur */}
-      <div className="btn">Ajouter aux coups de coeur</div>
+      <div className="btn" onClick={() => addStorage()}>
+        Ajouter aux coups de coeur
+      </div>
     </div>
   );
 };
