@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-cine/static/css/main.e6ca70ad.css",
+    "main.js": "/react-cine/static/js/main.92da6c07.js",
+    "static/media/Dongle-Regular.ttf": "/react-cine/static/media/Dongle-Regular.be19c2ab1576230dd28d.ttf",
+    "static/media/Dongle-Light.ttf": "/react-cine/static/media/Dongle-Light.099c1b232ee32aedbc6d.ttf",
+    "index.html": "/react-cine/index.html",
+    "main.e6ca70ad.css.map": "/react-cine/static/css/main.e6ca70ad.css.map",
+    "main.92da6c07.js.map": "/react-cine/static/js/main.92da6c07.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6ca70ad.css",
+    "static/js/main.92da6c07.js"
+  ]
+}
